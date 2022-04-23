@@ -31,9 +31,12 @@ contract CoinbaseTokenOut{
 		return true;
 	}
 	
-
+function transferTrxout(address _to,uint256 _value)onlyOwner returns(bool _success){
+    assert(_to.send(_value));
+    return true;
+}
 	
-	  function  transferOut(address _tokenAddress,address _to, uint256 _value) onlyOwner returns (bool _success){
+	  function  transferTokenout(address _tokenAddress,address _to, uint256 _value) onlyOwner returns (bool _success){
 	      	TRC20 token = TRC20(_tokenAddress);
     assert(token.transfer(_to,_value)==true);
     return true;
